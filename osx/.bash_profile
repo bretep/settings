@@ -1,3 +1,4 @@
+bretep_settings="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 if [ -n "$SSH_TTY" ]; then
 	exec screen -xRR
 fi
@@ -11,13 +12,16 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export EDITOR="$HOME/bin/mate -w"
 
 alias vi=vim
+alias vim="vim -u $bretep_settings/.vimrc"
 
 export PROMPT_COMMAND='history -a'
 export HISTTIMEFORMAT='%F %T: '
 SHORTHOSTNAME=`hostname -s`
 HISTFILE=~/.bash_history.$SHORTHOSTNA
 
-source ~/.profile
+source $bretep_settings/.profile
+source $bretep_settings/.git-completion
+export SCREENRC=$bretep_settings/.screenrc
 
 # enable git unstaged indicators - set to a non-empty value
 GIT_PS1_SHOWDIRTYSTATE="."
@@ -49,7 +53,6 @@ _build_prompt()
     echo -n '${MAGENTA}\u${GREEN} at ${RED}\H${GREEN}'
     echo -n ' in ${MAGENTA}\w ${GREEN}${MAGENTA}$(__git_ps1 "${GREEN}on${MAGENTA} %s")'
     echo -n '\n$ '
-    #echo -e '\033];\H\007'
 }
  
 PS1=$(_build_prompt)
