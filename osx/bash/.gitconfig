@@ -1,0 +1,22 @@
+[user]
+    email = bretep@gmail.com
+    name = Bret Palsson
+[github]
+    email = bretep@gmail.com
+    name = Bret Palsson
+
+[core]
+    quotepath = false
+    whitespace = trailing-space,space-before-tab,tabwidth=4,tab-in-indent
+    editor = vim
+	autocrlf = input
+[alias]
+    ci = commit
+    co = checkout
+    pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/develop"
+[color]
+    ui = auto
+[credential]
+    helper = osxkeychain
+[push]
+	default = simple
